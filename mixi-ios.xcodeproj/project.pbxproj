@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB4F9A0E265BE446009E2A21 /* RepositoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A0D265BE446009E2A21 /* RepositoryRow.swift */; };
+		BB4F9A11265BE5A9009E2A21 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A10265BE5A9009E2A21 /* RepositoryDetailView.swift */; };
+		BB4F9A13265BE6AD009E2A21 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A12265BE6AD009E2A21 /* MockUser.swift */; };
+		BB4F9A15265BE6B9009E2A21 /* MockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A14265BE6B9009E2A21 /* MockRepository.swift */; };
+		BB4F9A17265BF180009E2A21 /* RepositoryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A16265BF180009E2A21 /* RepositoryLoader.swift */; };
 		BB5954E2265BD05A00B0552B /* mixi_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5954E1265BD05A00B0552B /* mixi_iosApp.swift */; };
-		BB5954E4265BD05A00B0552B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5954E3265BD05A00B0552B /* ContentView.swift */; };
+		BB5954E4265BD05A00B0552B /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5954E3265BD05A00B0552B /* RepositoryListView.swift */; };
 		BB5954E6265BD05B00B0552B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB5954E5265BD05B00B0552B /* Assets.xcassets */; };
 		BB5954E9265BD05B00B0552B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB5954E8265BD05B00B0552B /* Preview Assets.xcassets */; };
 		BB5954F4265BD05B00B0552B /* mixi_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5954F3265BD05B00B0552B /* mixi_iosTests.swift */; };
 		BB5954FF265BD05B00B0552B /* mixi_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5954FE265BD05B00B0552B /* mixi_iosUITests.swift */; };
+		BB59550D265BDC5A00B0552B /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB59550C265BDC5A00B0552B /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB4F9A0D265BE446009E2A21 /* RepositoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRow.swift; sourceTree = "<group>"; };
+		BB4F9A10265BE5A9009E2A21 /* RepositoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailView.swift; sourceTree = "<group>"; };
+		BB4F9A12265BE6AD009E2A21 /* MockUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
+		BB4F9A14265BE6B9009E2A21 /* MockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepository.swift; sourceTree = "<group>"; };
+		BB4F9A16265BF180009E2A21 /* RepositoryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryLoader.swift; sourceTree = "<group>"; };
 		BB5954DE265BD05A00B0552B /* mixi-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mixi-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB5954E1265BD05A00B0552B /* mixi_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mixi_iosApp.swift; sourceTree = "<group>"; };
-		BB5954E3265BD05A00B0552B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BB5954E3265BD05A00B0552B /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
 		BB5954E5265BD05B00B0552B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB5954E8265BD05B00B0552B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BB5954EA265BD05B00B0552B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +56,7 @@
 		BB5954FA265BD05B00B0552B /* mixi-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mixi-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB5954FE265BD05B00B0552B /* mixi_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mixi_iosUITests.swift; sourceTree = "<group>"; };
 		BB595500265BD05B00B0552B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB59550C265BDC5A00B0552B /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB4F9A0F265BE57F009E2A21 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				BB5954E3265BD05A00B0552B /* RepositoryListView.swift */,
+				BB4F9A0D265BE446009E2A21 /* RepositoryRow.swift */,
+				BB4F9A10265BE5A9009E2A21 /* RepositoryDetailView.swift */,
+				BB4F9A16265BF180009E2A21 /* RepositoryLoader.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		BB5954D5265BD05A00B0552B = {
 			isa = PBXGroup;
 			children = (
@@ -95,10 +118,8 @@
 		BB5954E0265BD05A00B0552B /* mixi-ios */ = {
 			isa = PBXGroup;
 			children = (
-				BB5954E1265BD05A00B0552B /* mixi_iosApp.swift */,
-				BB5954E3265BD05A00B0552B /* ContentView.swift */,
-				BB5954E5265BD05B00B0552B /* Assets.xcassets */,
-				BB5954EA265BD05B00B0552B /* Info.plist */,
+				BB595510265BDDAB00B0552B /* Resources */,
+				BB595511265BDDB400B0552B /* Sources */,
 				BB5954E7265BD05B00B0552B /* Preview Content */,
 			);
 			path = "mixi-ios";
@@ -107,6 +128,8 @@
 		BB5954E7265BD05B00B0552B /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				BB4F9A12265BE6AD009E2A21 /* MockUser.swift */,
+				BB4F9A14265BE6B9009E2A21 /* MockRepository.swift */,
 				BB5954E8265BD05B00B0552B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -128,6 +151,49 @@
 				BB595500265BD05B00B0552B /* Info.plist */,
 			);
 			path = "mixi-iosUITests";
+			sourceTree = "<group>";
+		};
+		BB595510265BDDAB00B0552B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB5954EA265BD05B00B0552B /* Info.plist */,
+				BB5954E5265BD05B00B0552B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BB595511265BDDB400B0552B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BB595512265BDDC600B0552B /* Models */,
+				BB595513265BDDCD00B0552B /* Views */,
+				BB595514265BDDD200B0552B /* ViewModels */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BB595512265BDDC600B0552B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB59550C265BDC5A00B0552B /* Repository.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB595513265BDDCD00B0552B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB4F9A0F265BE57F009E2A21 /* Repository */,
+				BB5954E1265BD05A00B0552B /* mixi_iosApp.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BB595514265BDDD200B0552B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB5954E4265BD05A00B0552B /* ContentView.swift in Sources */,
+				BB4F9A17265BF180009E2A21 /* RepositoryLoader.swift in Sources */,
+				BB4F9A0E265BE446009E2A21 /* RepositoryRow.swift in Sources */,
+				BB4F9A15265BE6B9009E2A21 /* MockRepository.swift in Sources */,
+				BB59550D265BDC5A00B0552B /* Repository.swift in Sources */,
+				BB4F9A11265BE5A9009E2A21 /* RepositoryDetailView.swift in Sources */,
+				BB5954E4265BD05A00B0552B /* RepositoryListView.swift in Sources */,
+				BB4F9A13265BE6AD009E2A21 /* MockUser.swift in Sources */,
 				BB5954E2265BD05A00B0552B /* mixi_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +493,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"mixi-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 7MTQ5H3G29;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "mixi-ios/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/mixi-ios/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,7 +515,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"mixi-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 7MTQ5H3G29;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "mixi-ios/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/mixi-ios/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
