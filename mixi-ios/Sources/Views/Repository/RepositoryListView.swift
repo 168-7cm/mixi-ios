@@ -13,14 +13,39 @@ struct RepositoryListView: View {
 
     var body: some View {
         NavigationView {
-            if repositoryLoader.repositories.isEmpty {
-                ProgressView("loading.....")
-            } else {
-                List(repositoryLoader.repositories) { repository in
-                    NavigationLink(destination: RepositoryDetailView(repository: repository)) {
-                        RepositoryRow(repository: repository)
+            Group {
+                switch repositoryLoader.repositories {
+                case .idle, .loading:
+                    ProgressView("loading...")
+                case .failed:
+                    VStack {
+                        Group {
+                            Image("")
+                            Text("failed to load repositories")
+                                .padding(.top, 4)
+                        }
+                        .foregroundColor(.black)
+                        .opacity(0.4)
+                        Button(action: {
+                            repositoryLoader.fetchRepository()
+                        }, label: {
+                            Text("Retry")
+                                .fontWeight(.bold)
+                        }
+                        )
+                        .padding(.top, 8)
                     }
-                }.navigationTitle("Repositories")
+                case let .loaded(repositories):
+                    if repositories.isEmpty {
+                        Text("No repositories").fontWeight(.bold)
+                    } else {
+                        List(repositories) { repository in
+                            NavigationLink(destination: RepositoryDetailView(repository: repository)) {
+                                RepositoryRow(repository: repository)
+                            }
+                        }.navigationTitle("Repositories")
+                    }
+                }
             }
         }.onAppear {
             repositoryLoader.fetchRepository()
