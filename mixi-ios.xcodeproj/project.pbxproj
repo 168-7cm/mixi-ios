@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB47AFDF265CBAC800F8592E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BB47AFDE265CBAC800F8592E /* Alamofire */; };
 		BB4F9A0E265BE446009E2A21 /* RepositoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A0D265BE446009E2A21 /* RepositoryRow.swift */; };
 		BB4F9A11265BE5A9009E2A21 /* RepositoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A10265BE5A9009E2A21 /* RepositoryDetailView.swift */; };
 		BB4F9A13265BE6AD009E2A21 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4F9A12265BE6AD009E2A21 /* MockUser.swift */; };
@@ -64,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB47AFDF265CBAC800F8592E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +214,9 @@
 			dependencies = (
 			);
 			name = "mixi-ios";
+			packageProductDependencies = (
+				BB47AFDE265CBAC800F8592E /* Alamofire */,
+			);
 			productName = "mixi-ios";
 			productReference = BB5954DE265BD05A00B0552B /* mixi-ios.app */;
 			productType = "com.apple.product-type.application";
@@ -283,6 +288,9 @@
 				Base,
 			);
 			mainGroup = BB5954D5265BD05A00B0552B;
+			packageReferences = (
+				BB47AFDD265CBAC800F8592E /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = BB5954DF265BD05A00B0552B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -652,6 +660,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB47AFDD265CBAC800F8592E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB47AFDE265CBAC800F8592E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB47AFDD265CBAC800F8592E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB5954D6265BD05A00B0552B /* Project object */;
 }
