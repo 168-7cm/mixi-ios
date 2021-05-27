@@ -29,6 +29,6 @@ struct RepositoryRow: View {
 
 struct RepositoryRow_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryRow(repository: .mock1)
+       RepositoryRow(repository: Repository(id: 1, name: "", owner: User(name: ""), description: "", stargazersCount: 1))
     }
 }

@@ -14,21 +14,31 @@ class RepositoryLoader: ObservableObject {
     // setterのみをprivateに設定
     @Published private (set) var repositories = [Repository]()
 
+    private let url: URL = URL(string: "https://api.github.com/orgs/mixigroup/repos")!
+
     // disposeBagと同じ
     private var chancellables = Set<AnyCancellable>()
 
     func fetchRepository() {
-        let repositoryPublisher = Future<[Repository], Error> { promise in
-            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                promise(.success([.mock1, .mock2, .mock3, .mock4, .mock5]))
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.allHTTPHeaderFields = ["Accept": "application/vnd.github.v3+json"]
+
+        let repositoryPublisher = URLSession.shared.dataTaskPublisher(for: url)
+            .tryMap { element -> Data in
+                guard let httpRespnse = element.response as? HTTPURLResponse, httpRespnse.statusCode == 200 else { throw URLError(.badServerResponse) }
+                return element.data
             }
-        }
+            .decode(type: [Repository].self, decoder: JSONDecoder())
+
         repositoryPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion:  { completion in
-            print("didFinishedCompletion")
-        }, receiveValue:  { [weak self] repositories in
-            self?.repositories = repositories
-        }).store(in: &chancellables)
+            .sink(receiveCompletion: { completion in
+                print("finished\(completion)")
+            }, receiveValue: { [weak self] repositories in
+                self?.repositories = repositories
+            }
+            ).store(in: &chancellables)
     }
 }

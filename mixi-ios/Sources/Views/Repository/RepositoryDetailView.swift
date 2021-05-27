@@ -27,8 +27,10 @@ struct RepositoryDetailView: View {
                         .font(.body)
                         .fontWeight(.semibold)
 
-                    Text(repository.description)
-                        .padding(.top, 4)
+                    if let description = repository.description {
+                        Text(repository.description ?? "")
+                            .padding(.top, 4)
+                    }
 
                     HStack {
                         Image(systemName: "star")
@@ -47,6 +49,6 @@ struct RepositoryDetailView: View {
 
 struct RepositoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryDetailView(repository: .mock1)
+        RepositoryRow(repository: Repository(id: 1, name: "", owner: User(name: ""), description: "", stargazersCount: 1))
     }
 }
