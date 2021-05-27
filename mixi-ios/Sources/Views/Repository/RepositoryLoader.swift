@@ -9,10 +9,17 @@ import Foundation
 import Combine
 import Alamofire
 
+enum State<Value> {
+    case idle // まだデータを取得しにいっていない
+    case loading // 読み込み中
+    case failed(Error) // 読み込み失敗、遭遇したエラーを保持
+    case loaded(Value) // 読み込み完了、読み込まれたデータを保持
+}
+
 class RepositoryLoader: ObservableObject {
 
     // setterのみをprivateに設定
-    @Published private (set) var repositories = [Repository]()
+    @Published private (set) var repositories: State<[Repository]> = .idle
 
     private let url: URL = URL(string: "https://api.github.com/orgs/mixigroup/repos")!
 
@@ -29,15 +36,24 @@ class RepositoryLoader: ObservableObject {
             .tryMap { element -> Data in
                 guard let httpRespnse = element.response as? HTTPURLResponse, httpRespnse.statusCode == 200 else { throw URLError(.badServerResponse) }
                 return element.data
+
             }
             .decode(type: [Repository].self, decoder: JSONDecoder())
 
         repositoryPublisher
             .receive(on: DispatchQueue.main)
+            .handleEvents(receiveSubscription: { [weak self] _ in
+                self?.repositories = .loading
+            })
             .sink(receiveCompletion: { completion in
-                print("finished\(completion)")
+                switch completion {
+                case .failure(let error):
+                    self.repositories = .failed(error)
+                case .finished:
+                    print("didFinished")
+                }
             }, receiveValue: { [weak self] repositories in
-                self?.repositories = repositories
+                self?.repositories = .loaded(repositories)
             }
             ).store(in: &chancellables)
     }
