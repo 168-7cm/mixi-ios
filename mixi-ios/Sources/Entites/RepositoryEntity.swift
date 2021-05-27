@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Repository: Identifiable, Codable {
+struct RepositoryEntity: Identifiable, Codable {
     let id: Int
     let name: String
     let owner: User

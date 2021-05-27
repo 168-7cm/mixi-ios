@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RepositoryDetailView: View {
 
-    let repository: Repository
+    let repository: RepositoryEntity
 
     var body: some View {
         ScrollView {
@@ -49,6 +49,6 @@ struct RepositoryDetailView: View {
 
 struct RepositoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryRow(repository: Repository(id: 1, name: "", owner: User(name: ""), description: "", stargazersCount: 1))
+        RepositoryRow(repository: RepositoryEntity(id: 1, name: "", owner: User(name: ""), description: "", stargazersCount: 1))
     }
 }
