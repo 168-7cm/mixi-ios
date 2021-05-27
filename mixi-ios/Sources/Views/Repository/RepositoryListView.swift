@@ -9,12 +9,12 @@ import SwiftUI
 
 struct RepositoryListView: View {
 
-    @StateObject private var repositoryLoader = RepositoryLoader()
+    @StateObject private var repositoryViewModel = RepositoryViewModel()
 
     var body: some View {
         NavigationView {
             Group {
-                switch repositoryLoader.repositories {
+                switch repositoryViewModel.repositories {
                 case .idle, .loading:
                     ProgressView("loading...")
                 case .failed:
@@ -27,7 +27,7 @@ struct RepositoryListView: View {
                         .foregroundColor(.black)
                         .opacity(0.4)
                         Button(action: {
-                            repositoryLoader.fetchRepository()
+                            repositoryViewModel.retryButtonDidTapped()
                         }, label: {
                             Text("Retry")
                                 .fontWeight(.bold)
@@ -48,7 +48,7 @@ struct RepositoryListView: View {
                 }
             }
         }.onAppear {
-            repositoryLoader.fetchRepository()
+            repositoryViewModel.onAppear()
         }
     }
 }
