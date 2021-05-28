@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-final class RepositoryModel {
+protocol RepositoryModelType {
+    func fetchRepositories() -> AnyPublisher<[RepositoryEntity], Error>
+}
+
+final class RepositoryModel: RepositoryModelType {
     func fetchRepositories() -> AnyPublisher<[RepositoryEntity], Error> {
         return RepositoryAPIClient().getRepositories()
     }

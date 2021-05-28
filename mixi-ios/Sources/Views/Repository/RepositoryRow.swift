@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-struct RepositoryRow: View {
+struct RepositoryRowView: View {
     let repository: RepositoryEntity
 
     var body: some View {
-
         HStack {
             Image("GitHubMark")
                 .resizable()
@@ -29,6 +28,6 @@ struct RepositoryRow: View {
 
 struct RepositoryRow_Previews: PreviewProvider {
     static var previews: some View {
-       RepositoryRow(repository: RepositoryEntity(id: 1, name: "", owner: User(name: ""), description: "", stargazersCount: 1))
+       RepositoryRowView(repository: RepositoryEntity(id: 1, name: "", owner: User(name: ""), description: "", stargazersCount: 1))
     }
 }
