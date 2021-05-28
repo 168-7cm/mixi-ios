@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RepositoryListView: View {
 
-    @StateObject private var repositoryViewModel = RepositoryViewModel()
+    @EnvironmentObject private var repositoryViewModel: RepositoryViewModel
 
     var body: some View {
         NavigationView {
@@ -18,30 +18,14 @@ struct RepositoryListView: View {
                 case .idle, .loading:
                     ProgressView("loading...")
                 case .failed:
-                    VStack {
-                        Group {
-                            Image("")
-                            Text("failed to load repositories")
-                                .padding(.top, 4)
-                        }
-                        .foregroundColor(.black)
-                        .opacity(0.4)
-                        Button(action: {
-                            repositoryViewModel.retryButtonDidTapped()
-                        }, label: {
-                            Text("Retry")
-                                .fontWeight(.bold)
-                        }
-                        )
-                        .padding(.top, 8)
-                    }
+                    NoRepositoryView()
                 case let .loaded(repositories):
                     if repositories.isEmpty {
                         Text("No repositories").fontWeight(.bold)
                     } else {
                         List(repositories) { repository in
                             NavigationLink(destination: RepositoryDetailView(repository: repository)) {
-                                RepositoryRow(repository: repository)
+                                RepositoryRowView(repository: repository)
                             }
                         }.navigationTitle("Repositories")
                     }
@@ -55,6 +39,36 @@ struct RepositoryListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryListView()
+        Group {
+            RepositoryListView()
+                .environmentObject(RepositoryViewModel(
+                    repositoryModel: MockRepositoryModel(
+                        repositories: [
+                            .mock1, .mock2, .mock3, .mock4, .mock5
+                        ]
+                    )
+                )
+            )
+            .previewDisplayName("Default")
+
+            RepositoryListView()
+                .environmentObject(RepositoryViewModel(
+                    repositoryModel: MockRepositoryModel(
+                        repositories: []
+                    )
+                )
+            )
+            .previewDisplayName("Empty")
+
+            RepositoryListView()
+                .environmentObject(RepositoryViewModel(
+                    repositoryModel: MockRepositoryModel(
+                        repositories: [],
+                        error: DummyError()
+                    )
+                )
+            )
+            .previewDisplayName("Error")
+        }
     }
 }

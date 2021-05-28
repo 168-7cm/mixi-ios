@@ -11,7 +11,7 @@ import SwiftUI
 struct mixi_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            RepositoryListView()
+            RepositoryListView().environmentObject(RepositoryViewModel(repositoryModel: RepositoryModel()))
         }
     }
 }

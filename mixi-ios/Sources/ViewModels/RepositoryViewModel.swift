@@ -9,17 +9,16 @@ import Foundation
 import Combine
 import Alamofire
 
-enum State<Value> {
-    case idle // まだデータを取得しにいっていない
-    case loading // 読み込み中
-    case failed(Error) // 読み込み失敗、遭遇したエラーを保持
-    case loaded(Value) // 読み込み完了、読み込まれたデータを保持
-}
-
 final class RepositoryViewModel: ObservableObject {
     @Published private (set) var repositories: State<[RepositoryEntity]> = .idle
 
     private var cancellables = Set<AnyCancellable>()
+
+    private let repositoryModel: RepositoryModelType!
+
+    init(repositoryModel: RepositoryModelType = RepositoryModel()) {
+        self.repositoryModel = repositoryModel
+    }
 
     func onAppear() {
         loadRepositories()
@@ -30,7 +29,7 @@ final class RepositoryViewModel: ObservableObject {
     }
 
     private func loadRepositories() {
-        RepositoryModel().fetchRepositories()
+        repositoryModel.fetchRepositories()
             // イベント発火時に呼ばれる
             .handleEvents(receiveSubscription: { [weak self] _ in
                 self?.repositories = .loading
@@ -38,7 +37,8 @@ final class RepositoryViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):
-                    self.repositories = .failed(error)
+                    DispatchQueue.main.async {  self.repositories = .failed(error) }
+
                 case .finished:
                     print("didFinished")
                 }
